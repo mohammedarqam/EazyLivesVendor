@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <p class="welcomeBar">Welcome to Eazylives, {{name}} </p>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item no-lines class="content">
+    <ion-icon name="ios-contact" item-start color="primary"></ion-icon>
+    <h1 class="title">Profile</h1>
+  </ion-item>
+
+      <ion-card>
+        <ion-card-content>
+      
+          <ion-item>
+            <ion-label color="primary" fixed>Name</ion-label>
+            <ion-input type="text" placeholder="John Doe" [(ngModel)]="name" autofocus ></ion-input>
+          </ion-item>
+      
+      
+          <ion-item>
+            <ion-label color="primary"  fixed>Category</ion-label>
+            <ion-select [(ngModel)]="category" multiple="true" placeholder="Function Hall , Catering ,etc">
+              <ion-option value="Function Hall">Function Hall</ion-option>
+              <ion-option value="Catering">Catering</ion-option>
+            </ion-select>
+          </ion-item>
+      
+      
+          <br>
+          
+          <div class="mailItem">
+            <p class="labelMail">Verified : </p>
+            <p class="Mail">{{verified}}</p>
+          </div>
+      
+          
+          <ion-buttons end>
+
+            <button ion-button  color="light"  (click)="getVendor()">Reset</button>
+            <button ion-button  color="primary"  (click)="update()">Update</button>
+          </ion-buttons>
+
+        </ion-card-content>
+      
+      
+      </ion-card>
+
+  <ion-item no-lines class="content">
+    <ion-icon name="md-mail" item-start color="primary"></ion-icon>
+    <h1 class="title">Update Email</h1>
+  </ion-item>
+
+
+<ion-card>
+
+
+  
+  
+  <div class="mailItem">
+    <p class="labelMail">Current Email : </p>
+    <p class="Mail">{{email}}</p>
+  </div>
+
+<ion-item>
+  <ion-label color="primary" fixed>New Email</ion-label>
+  <ion-input type="email" placeholder="newemail@email.com" [(ngModel)]="newEmail"></ion-input>
+</ion-item>
+
+<ion-buttons end>
+  <button  ion-button  color="primary" [disabled]="!newEmail"  (click)="updateEmailConfirm()">Update Email</button>
+</ion-buttons>
+
+          
+  
+</ion-card>
+</ion-content>

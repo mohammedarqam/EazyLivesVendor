@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <p class="welcomeBar">Welcome to Eazylives, {{name}} </p>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item no-lines class="content">
+    <ion-icon name="md-notifications" item-start color="primary"  ></ion-icon>
+    <h1 class="title">Notifications</h1>
+  </ion-item>
+
+
+<ion-list>
+
+  <ion-card color="primary">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2 >
+          Date
+        </ion-col>
+        <ion-col col-3 >
+          Event
+        </ion-col  >
+        <ion-col>
+          Description
+        </ion-col>
+        <ion-col push-1 >
+          Status
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card *ngFor ="let notify of notifications" >
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+        {{notify.Date}}
+        </ion-col>
+        <ion-col col-3>
+          {{notify.Event}}
+        </ion-col>
+        <ion-col>
+          {{notify.Description}}
+        </ion-col>
+
+        <ion-col>
+          <button ion-button clear [color]="notify.color" (click)="showNotification(notify)" >
+            <ion-icon [name]="notify.icon" ></ion-icon>
+          </button>
+        </ion-col>
+
+        <ion-col>
+          <button ion-button clear [color]="notify.color" (click)="showNotification(notify)">
+            {{notify.Status}}
+          </button>
+        </ion-col>
+        
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+
+</ion-list>
+<!--
+<button ion-button color="danger" (click)="sendNotification()">Send Notification</button>
+-->
+
+</ion-content>

@@ -1,0 +1,80 @@
+<ion-content padding>
+  <div class="bg-main">
+  </div>
+
+  <ion-slides #slides >
+    <ion-slide>
+      <ion-card>
+        <ion-card-content>
+          <h1 class="signinTitle">Easylives Vendor Login</h1>
+
+          <ion-item>
+            <ion-label color="whiter" fixed>Email</ion-label>
+            <ion-input type="email" placeholder="vendor@email.com"  [(ngModel)]="lemail"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="whiter" fixed>Password</ion-label>
+            <ion-input type="password" placeholder="********"  [(ngModel)]="lpass"></ion-input>
+          </ion-item>
+
+          <button ion-button block color="primary" [disabled]="!lemail||!lpass" (click)="login()">Login</button>
+
+          <button ion-button color="whiter" clear (click)="signUpSlide()">New ? Sign Up as a Vendor</button>
+
+        </ion-card-content>
+
+
+      </ion-card>
+    </ion-slide>
+
+
+
+
+
+    <ion-slide>
+      <ion-card>
+        <ion-card-content>
+          <h1 class="signinTitle">Easylives Vendor Sign Up</h1>
+    
+          <ion-item>
+            <ion-label color="whiter" fixed>Name</ion-label>
+            <ion-input type="email" placeholder="John Doe" [(ngModel)]="sname"></ion-input>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label color="whiter"  fixed >Category</ion-label>
+            <ion-select [(ngModel)]="scat" multiple="true" placeholder="Function Hall , Catering ,etc">
+              <ion-option value="Function Hall">Function Hall</ion-option>
+              <ion-option value="Catering">Catering</ion-option>
+            </ion-select>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label color="whiter" fixed>Email</ion-label>
+            <ion-input type="email" placeholder="vendor@email.com" [(ngModel)]="semail"></ion-input>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label color="whiter" fixed>Password</ion-label>
+            <ion-input type="password" placeholder="********" [(ngModel)]="spass"></ion-input>
+          </ion-item>
+    
+          <button ion-button block color="primary" [disabled]="!semail||!spass||!sname||!scat" (click)="signUp()">Sign Up</button>
+    
+          <button ion-button color="whiter" clear (click)="loginSlide()">Vendor ? Log IN as a Vendor</button>
+    
+        </ion-card-content>
+    
+    
+      </ion-card>
+    </ion-slide>
+
+
+
+
+
+  </ion-slides>
+</ion-content>
