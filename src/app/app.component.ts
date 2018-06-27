@@ -1,13 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
 import * as firebase from 'firebase';
 
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
-import { NotificationsPage } from '../pages/notifications/notifications';
-import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,7 +9,7 @@ import { ProfilePage } from '../pages/profile/profile';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = "LoginPage";
 
   pages: Array<{ title: string, component: any, icon: any }>;
   activePage: any;
@@ -25,9 +19,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage, icon: "home" },
-      { title: 'Notifications', component: NotificationsPage, icon: "md-notifications" },
-      { title: 'Profile', component: ProfilePage, icon: "ios-contact" },
+      { title: 'Home', component: "HomePage", icon: "home" },
+      { title: 'Notifications', component: "NotificationsPage", icon: "md-notifications" },
+      { title: 'Profile', component: "ProfilePage", icon: "ios-contact" },
     ];
     this.activePage = this.pages[0];
 
@@ -50,7 +44,7 @@ export class MyApp {
 
   signOut() {
     firebase.auth().signOut().then(() => {
-      this.nav.setRoot(LoginPage);
+      this.nav.setRoot("LoginPage");
     }).catch((error) => {
       console.log(error.message);
     });

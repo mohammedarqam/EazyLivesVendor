@@ -1,9 +1,7 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController, LoadingController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { Slides } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { NotificationsPage } from '../notifications/notifications';
 
 
 
@@ -168,7 +166,7 @@ export class LoginPage {
   }
 
   gtHome() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot("HomePage");
   }
 
   presentToast(msg) {

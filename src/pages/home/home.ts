@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, MenuController, LoadingController, ToastController, IonicPage } from 'ionic-angular';
 import * as firebase from 'firebase';
 
 
 
-
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
