@@ -41,6 +41,7 @@ export class LoginPage {
     public toastCtrl: ToastController,
   ) {
     this.menuCtrl.enable(false);
+    // this.userCheck();
   }
 
   ionViewDidEnter() {
@@ -52,15 +53,10 @@ export class LoginPage {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
-
     loading.present();
-
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-
       this.vendorRef.child(firebase.auth().currentUser.uid).on('value', itemSnapshot => {
-
-
         if (itemSnapshot.val()) {
           if (itemSnapshot.val().Verified) {
             this.gtHome();
@@ -76,16 +72,11 @@ export class LoginPage {
           this.lemail = null;
           this.lpass = null;
         }
-
-
-
       });
     }else{
         this.lemail = null;
         this.lpass = null;
-
     }
-
     });
     loading.dismiss();
 

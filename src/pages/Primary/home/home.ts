@@ -26,9 +26,6 @@ export class HomePage {
   }
 
 
-ionViewDidEnter(){
-this.getVendor();
-}
 
 gtNoti(){
   this.navCtrl.setRoot("NotificationsPage");
@@ -45,8 +42,9 @@ getVendor(){
 
   this.vendorRef.once('value', snapShot => {
     this.name = snapShot.val().Name;
+  }).then(()=>{
+    this.presentToast( "Signed In as "+ this.name);
   });
-  this.presentToast( "Signed In as "+ this.name);
   loading.dismiss();
 }
 
