@@ -22,15 +22,20 @@ export class HomePage {
 
   ) {
     this.menuCtrl.enable(true);
+    this.getVendor();
   }
 
 
 ionViewDidEnter(){
-
 this.getVendor();
-
 }
 
+gtNoti(){
+  this.navCtrl.setRoot("NotificationsPage");
+}
+gtProfile(){
+  this.navCtrl.setRoot("ProfilePage");
+}
 
 getVendor(){
   let loading = this.loadingCtrl.create({
@@ -40,10 +45,9 @@ getVendor(){
 
   this.vendorRef.once('value', snapShot => {
     this.name = snapShot.val().Name;
-  }).then(()=>{
-    this.presentToast( "Signed In as "+ this.name);
-    loading.dismiss();
   });
+  this.presentToast( "Signed In as "+ this.name);
+  loading.dismiss();
 }
 
   presentToast(msg) {

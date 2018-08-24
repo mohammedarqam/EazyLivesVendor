@@ -50,15 +50,20 @@ export class ProfilePage {
       this.email = temp.Email;
       this.password = temp.Password;
       this.verified = temp.Verified;
-      console.log(this.password);
-      console.log(this.verified);
+      console.log(temp.Category);
   
 
     }).then(() => {
       loading.dismiss();
     });
   }
-
+  gtNoti(){
+    this.navCtrl.setRoot("NotificationsPage");
+  }
+  gtProfile(){
+    this.navCtrl.setRoot("ProfilePage");
+  }
+  
 update(){
   let loading = this.loadingCtrl.create({
     content: 'Saving...'

@@ -39,7 +39,13 @@ export class NotificationsPage {
    this.getNotifications();
    
   }
-
+  gtNoti(){
+    this.navCtrl.setRoot("NotificationsPage");
+  }
+  gtProfile(){
+    this.navCtrl.setRoot("ProfilePage");
+  }
+  
   getNotifications() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'

@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <p class="welcomeBar">Welcome to Eazylives, {{name}} </p>
+    <ion-buttons end class="topBar" >
+      <button class="topBarBtns" ion-button icon-only large (click)="gtNoti()" clear>
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+      <button ion-button icon-only large (click)="gtProfile()" clear>
+        <ion-icon name="ios-contact"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines class="content">
+    <h1 class="title">Function Halls</h1>
+  </ion-item>
+  <ion-item class="content" >
+  <ion-searchbar animated="true" placeholder="Enter Funtion Hall Name" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+  </ion-item>
+<!--
+-->
+
+  <ion-item no-lines class="content" >
+    <ion-icon name="ios-pin" color="primary" item-end ></ion-icon>
+    <h2 class="heads"  item-end>{{totFunctions}}</h2>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-md-6 *ngFor="let function of functions" >
+        <ion-card padding >
+          <ion-card-content>
+
+
+            
+            <div class="mainContent">
+            <div class="topStuff">
+            <h1 class="Name" >{{function.key}} </h1>
+            <p class="bookedNo">0</p>
+            <p class="bookText">No of Times Booked</p>
+            </div>
+            
+            <div class="bottomBar" padding>
+            <h2 class="ContactPerson" >{{function.ContactPerson}} </h2>
+            <h2 class="MobileContact">{{function.MobileContact}} </h2>
+            </div>
+            </div>
+            
+            
+            
+            
+            <div class="editBtns">
+        <button class="btnTrash" icon-only ion-button color="primary" (click)="edit(function)" >
+          <ion-icon name="eye"></ion-icon>
+        </button>
+        <button class="btnTrash"  icon-only ion-button color="secondary" (click)="edit(function)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button class="btnTrash" icon-only ion-button color="danger" (click)="deleteFunction(function)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+            >
+
+
+
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="newFunction()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+
+
+</ion-content>

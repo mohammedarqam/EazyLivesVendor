@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    {{name}}
+    <ion-buttons end>
+      <button ion-button outline (click)="done()">Done</button>
+    </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 >
+        <ion-card class="blankImage content" >
+          <ion-input type="file"  (change)="fileChange($event)"
+           accept="image/x-png,image/gif,image/jpeg" >
+          </ion-input>
+          
+          <div class="blankImageDiv" >
+          <p class="plus" >+</p>  
+          <p class="textP">Click to Add Image</p>
+          </div>
+  
+        </ion-card>
+      </ion-col>
+  
+      <ion-col col-6 *ngFor="let Image of Images" >
+        <ion-card class="blankImage" >
+            <img [src]="Image.ImageUrl" class="main" />
+            <div class="editBtns">
+              <button ion-button color="danger" (click)="deleteImage(Image)">
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </div>
+        </ion-card>
+      </ion-col>
+  
+  
+    </ion-row>
+  
+  </ion-grid>
+  
+  </ion-content>
+  

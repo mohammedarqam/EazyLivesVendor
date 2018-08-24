@@ -1,0 +1,298 @@
+<ion-header  >
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content padding>
+    <ion-item no-lines class="content">
+        <h1 class="title">Add Function Hall</h1>
+    </ion-item>
+    
+<ion-card>
+  <ion-card-content>
+
+  <ion-grid>
+
+
+    <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary" >
+        <p ion-text color="danger" >*</p>
+        Function Hall Name</ion-label>
+      <ion-input type="text"  (ionChange)="capsName(name)" autofocus [(ngModel)]="name"></ion-input>
+    </ion-item>
+    </ion-row>
+
+    <ion-row radio-group [(ngModel)]="Ownership" padding >
+    <ion-col col-2>
+      <ion-label>Owned</ion-label>
+      <ion-radio value="Owned" checked ></ion-radio>
+    </ion-col>
+    <ion-col col-2 >
+      <ion-label>Leased</ion-label>
+      <ion-radio value="Leased"></ion-radio>
+    </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+    <ion-item>
+        <ion-label stacked color="primary" >Owner 1</ion-label>
+        <ion-input type="text" (ionChange)="capsOwner1(Owner1)"  [(ngModel)]="Owner1"></ion-input>
+    </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary" > Owner 2</ion-label>
+        <ion-input type="text" (ionChange)="capsOwner2(Owner2)" [(ngModel)]="Owner2"></ion-input>
+    </ion-item>
+  </ion-row>
+  
+  <ion-row>
+      <ion-item>
+      <ion-label stacked color="primary">
+          <p ion-text color="danger" >*</p>
+          Contact Person Name</ion-label>
+      <ion-input type="text" (ionChange)="capsContactPerson(ContactPerson)" [(ngModel)]="ContactPerson"></ion-input>
+    </ion-item>
+  </ion-row>
+  
+  <ion-row>
+    <ion-item>
+        <ion-label stacked color="primary">Office Contact</ion-label>
+        <ion-input type="number"   [(ngModel)]="OfficeContact"></ion-input>
+    </ion-item>
+  </ion-row>
+  
+  <ion-row>
+    <ion-item>
+        <ion-label stacked color="primary">
+            <p ion-text color="danger" >*</p>
+            Mobile Contact</ion-label>
+        <ion-input type="number"  [(ngModel)]="MobileContact"></ion-input>
+    </ion-item>
+  </ion-row>
+  
+  <ion-row>
+    <ion-item>
+        <ion-label stacked color="primary">Maintenace Contact Number</ion-label>
+        <ion-input type="number"  [(ngModel)]="MaintenanceContact"></ion-input>
+    </ion-item>
+  </ion-row>
+
+  
+<ion-row>
+<ion-item>
+      <ion-label stacked color="primary">
+          <p ion-text color="danger" >*</p>
+          Maximum Capacity</ion-label>
+      <ion-input type="number" [(ngModel)]="MaxCapacity"></ion-input>
+    </ion-item>  
+  </ion-row>
+  
+  <ion-row>
+  <ion-item>
+    <ion-label stacked color="primary">
+        <p ion-text color="danger" >*</p>
+        Minimum Capacity</ion-label>
+    <ion-input type="number" [(ngModel)]="MinCapacity"></ion-input>
+  </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked > Crocery Variety</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="CroceryVariety"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="CroceryVariety" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="CroceryVarietyAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >Cutlery Available</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="CutleryAvailable"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="CutleryAvailable" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="CutleryAvailableAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >Decor Included</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="DecorIncluded"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="DecorIncluded" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="DecorIncludedAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >Electrical Decors</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="ElectricalDecors"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="ElectricalDecors" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="ElectricalDecorsAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >ReadyMade Stage</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="ReadyMadeStage"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="ReadyMadeStage" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="ReadyMadeStageAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >MeterConsumptionIncluded</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="MeterConsumptionIncluded"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="MeterConsumptionIncluded" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="MeterConsumptionIncludedAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >Butler And Bohis Included</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="ButlerAndBohisIncluded"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="ButlerAndBohisIncluded" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="ButlerAndBohisIncludedAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >Generator Included</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="GeneratorIncluded"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="GeneratorIncluded" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="GeneratorIncludedAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >A/C</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="ACArrangementCharges"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="ACArrangementCharges" >
+    <ion-item>
+      <ion-label stacked >A/C Arrangement Charges</ion-label>
+      <ion-input type="number" [(ngModel)]="ACArrangementChargesAmount" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary">Extra Charges 1</ion-label>
+      <ion-input type="text" [(ngModel)]="ExtraCharges1"></ion-input>
+    </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary">Extra Charges 2</ion-label>
+      <ion-input type="text" [(ngModel)]="ExtraCharges2"></ion-input>
+    </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary">Extra Charges 3</ion-label>
+      <ion-input type="text" [(ngModel)]="ExtraCharges3"></ion-input>
+    </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary">Minimum Booking Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="MBAmount"></ion-input>
+    </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary">Note Point</ion-label>
+      <ion-input type="text" [(ngModel)]="NotePoint"></ion-input>
+    </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary">Extra Points</ion-label>
+      <ion-textarea [(ngModel)]="ExtraPoints"></ion-textarea>
+    </ion-item>
+  </ion-row>
+
+  <ion-row>
+    <button ion-button color="primary" [disabled]="!name||!ContactPerson||!MobileContact||!MaxCapacity||!MinCapacity" block (click)="save()" >Save and Upload Images</button>
+  </ion-row>
+
+</ion-grid>
+  </ion-card-content>
+</ion-card>  
+
+
+
+
+</ion-content>
+

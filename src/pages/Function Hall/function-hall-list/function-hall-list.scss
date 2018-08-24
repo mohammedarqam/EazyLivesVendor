@@ -1,0 +1,79 @@
+page-function-hall-list {
+.card{
+    height: 200px;
+    border-radius: 2%;
+    box-shadow : 0 5px 5px 0 rgba(0,0,0,0.25);
+}
+.footerDiv{
+    position: absolute;
+    bottom: 0;
+    transform: translate(10%)
+}
+
+.editBtns {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+    opacity: 0;
+  }
+
+  .card:hover .mainContent {
+    opacity: 0.3;
+  }
+  
+   .card:hover .editBtns {
+    opacity: 1;
+  }
+
+
+
+.bookedNo{
+    position: absolute;
+    right: 0;
+    margin-right: 20%;
+    padding-left: 20%;
+    font-size: 32px;
+    color: map-get($colors,dark);
+    border-left: 1px solid map-get($colors,dark);
+}
+.bookedText{
+    padding-top: 50%;
+    text-align: center;
+}
+  .Name{
+    text-align: center;
+    font-weight : 500;
+    color : map-get($colors,primary);
+    margin-bottom: 5%;
+}
+
+.bottomBar{
+    position: absolute;
+    bottom : 5%;
+    left: 3%;    
+    height: 20%;
+    display: inline-block;
+    background-color: map-get($colors,primary);
+    color : white;
+    padding-top: 2%;
+    width: 94%;
+}
+
+.ContactPerson{
+    color: white;
+    font-weight : 500;
+    float: left;    
+}
+
+.MobileContact{
+    color : white;
+    font-weight : 500;
+    float: right;
+}
+
+
+}

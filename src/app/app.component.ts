@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import * as firebase from 'firebase';
+import { FunctionHallListPage } from '../pages/Function Hall/function-hall-list/function-hall-list';
 
 
 @Component({
@@ -17,9 +18,10 @@ export class MyApp {
   constructor(public platform: Platform, ) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: "HomePage", icon: "home" },
+      { title: 'Function Halls', component: "FunctionHallListPage", icon: "ios-pin"  },
+      { title: 'Add FunctionHall', component: "AddFunctionHallPage", icon: "ios-pin"  },
       { title: 'Notifications', component: "NotificationsPage", icon: "md-notifications" },
       { title: 'Profile', component: "ProfilePage", icon: "ios-contact" },
     ];
