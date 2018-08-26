@@ -1,18 +1,68 @@
-<!--
-  Generated template for the ElectronicsViewPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <p class="welcomeBar">Welcome to Eazylives, {{name}} </p>
+    <ion-buttons end class="topBar" >
+      <button class="topBarBtns" ion-button icon-only large (click)="gtNoti()" clear>
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+      <button ion-button icon-only large (click)="gtProfile()" clear>
+        <ion-icon name="ios-contact"></ion-icon>
+      </button>
+    </ion-buttons>
 
-  <ion-navbar>
-    <ion-title>ElectronicsView</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 >
+    <ion-item no-lines class="content">
+    <h1 class="title" item-start>Electronics</h1>
+    </ion-item>
+    </ion-col>
+    <ion-col col-6 push-2 >
+    <ion-searchbar item-end animated="true" placeholder="Search a Restaurant" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+    
+<ion-grid>
+  <ion-row>
+    <ion-col col-md-3 *ngFor="let e of electronics">
+    <ion-card >
+      <ion-card-content>
+        <ion-card-title>
+          {{e.ProductName}}
+        </ion-card-title>
+        <ion-item>
+            <p item-start ion-text color="primary" >Rate/Day</p>
+            <p item-end ion-text color="danger">{{e.RatePerDay}} </p>
+        </ion-item>
+    </ion-card-content>
+    </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+
+
+
+
+
+
+
+
+
+
+    <ion-fab right bottom>
+    <button ion-fab (click)="addItem()" color="danger">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 
 </ion-content>

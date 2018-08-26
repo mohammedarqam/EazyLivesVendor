@@ -1,18 +1,82 @@
-<!--
-  Generated template for the AddPackagePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>addPackage</ion-title>
-  </ion-navbar>
-
-</ion-header>
+    <ion-navbar color="primary" >
+      <ion-title>Add Package</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only clear (click)="close()" >
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
 
 
 <ion-content padding>
+
+<button ion-button class="lefty" (click)="checkData()">Add Item</button>
+
+<ion-card>
+  <ion-card-content>
+    <ion-item>
+      <ion-label floating>Package Name</ion-label>
+      <ion-input type="text" autofocus [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Price</ion-label>
+      <ion-input type="number" [(ngModel)]="price"></ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+
+
+
+<ion-searchbar item-end animated="true" placeholder="Search an Item" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+
+<!-- <ion-navbar color="primary" >
+  <ion-title>Items</ion-title>
+</ion-navbar> -->
+<ion-list class="listi" *ngIf="!packItems.length" >
+  <ion-list-header color="primary" >
+    Package Items
+  </ion-list-header>
+  <ion-item *ngFor="let ita of packItems; let i = index" >
+    <h3 item-start >{{ita.Name}}</h3>
+    <button clear ion-button color="danger" item-end (click)="rmItemtoPack(it,i)" icon-only>
+      <ion-icon name="md-remove-circle"></ion-icon>
+    </button> 
+  </ion-item>
+</ion-list>
+
+<ion-list class="listi" *ngIf="!packItems.length" >
+    <ion-list-header color="primary" >
+      Package Items
+    </ion-list-header>
+    <ion-item>
+      <h3 item-start>Package Empty</h3>
+    </ion-item>
+</ion-list>  
+
+
+<ion-list class="listi" *ngIf="items.length" >
+  <ion-list-header color="primary" >
+    All Items
+  </ion-list-header>
+  <ion-item *ngFor="let it of items; let i = index" >
+    <h3 item-start >{{it.Name}}</h3>
+    <button clear ion-button color="secondary" icon-only item-end (click)="addItemtoPack(it,i)">
+      <ion-icon name="md-add-circle"></ion-icon>
+    </button>
+  </ion-item>
+</ion-list>
+
+<ion-list class="listi" *ngIf="!items.length" >
+    <ion-list-header color="primary" >
+      All Items
+    </ion-list-header>
+    <ion-item>
+      <h3 item-start>Add Items First</h3>
+    </ion-item>
+</ion-list>  
+
+
 
 </ion-content>

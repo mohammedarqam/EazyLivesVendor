@@ -1,18 +1,70 @@
-<!--
-  Generated template for the AddRentalsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>addRentals</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
+<ion-header  >
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-navbar>
+  </ion-header>
+  
 <ion-content padding>
+    <ion-item no-lines class="content">
+        <h1 class="title">Add {{cat}}</h1>
+    </ion-item>
+
+
+    <ion-card>
+      <ion-card-content>
+
+    <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary" >
+        <p ion-text color="danger" >*</p>
+        Product Name</ion-label>
+      <ion-input type="text"  (ionChange)="capsName(name)" autofocus [(ngModel)]="name"></ion-input>
+    </ion-item>
+    </ion-row>
+
+    
+    <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary" >
+        Size</ion-label>
+      <ion-input type="number" [(ngModel)]="size"></ion-input>
+    </ion-item>
+    </ion-row>
+
+    <ion-row>
+    <ion-item>
+      <ion-label stacked color="primary" >
+        <p ion-text color="danger" >*</p>
+        Rate per Day</ion-label>
+      <ion-input type="number" [(ngModel)]="rpd"></ion-input>
+    </ion-item>
+    </ion-row>
+
+    
+
+  <ion-row>
+    <ion-col >
+      <ion-label stacked >Delivery Charges</ion-label>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="Delivery"></ion-checkbox>
+    </ion-item>
+    </ion-col>
+    <ion-col col-3 *ngIf="Delivery" >
+    <ion-item>
+      <ion-label stacked >Amount</ion-label>
+      <ion-input type="number" [(ngModel)]="DeliveryCharges" ></ion-input>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+
+
+  <button ion-button block [disabled]="!name||!rpd" (click)="addRental()">Add Item</button>
+
+
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>

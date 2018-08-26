@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ElectronicsViewPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,81 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ElectronicsViewPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  vendorUid: string = firebase.auth().currentUser.uid;
+  vendorRef = firebase.database().ref("Vendors/").child(this.vendorUid);
+  name : string;
+
+
+  electronicsRef= firebase.database().ref("Electronics/").child(this.vendorUid);
+  public electronics: Array<any> = [];
+  public loadedElectronics : Array<any> = [];
+  totElectronics : number =0;
+
+  constructor(
+  public navCtrl: NavController, 
+  public loadingCtrl: LoadingController,
+  public toastCtrl: ToastController,
+  public navParams: NavParams) {
+    this.getElectronics();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ElectronicsViewPage');
+  getElectronics(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    this.electronicsRef.once("value",itemSnapshot=>{
+      let tempArray = [];
+      itemSnapshot.forEach(itemSnap => {
+        var temp = itemSnap.val();
+        temp.key = itemSnap.key;
+        tempArray.push(temp);
+        return false;
+      });
+      this.electronics = tempArray;
+      this.loadedElectronics = tempArray;
+      this.totElectronics = this.loadedElectronics.length;
+    }).then(()=>{
+      this.getVendor();
+      loading.dismiss();
+    }) ;
+}
+
+initializeItems(): void {
+  this.electronics = this.loadedElectronics;
+}
+getItems(searchbar) {
+  this.initializeItems();
+  let q = searchbar;
+  if (!q) {
+    return;
   }
+  this.electronics = this.electronics.filter((v) => {
+    if(v.ProductName && q) {
+      if (v.ProductName.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    }
+  });
+}
+
+  gtNoti(){
+    this.navCtrl.setRoot("NotificationsPage");
+  }
+  gtProfile(){
+    this.navCtrl.setRoot("ProfilePage");
+  }
+  
+  getVendor(){  
+    this.vendorRef.once('value', snapShot => {
+      this.name = snapShot.val().Name;
+    });
+  }
+
+  addItem(){
+    this.navCtrl.setRoot("AddRentalsPage",{cat : "Electronics"} )
+  }
+
 
 }

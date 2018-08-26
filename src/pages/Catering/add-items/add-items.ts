@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController, LoadingController } from 'ionic-angular';
+import * as firebase from 'firebase';
+import moment from 'moment';
 
-/**
- * Generated class for the AddItemsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +11,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddItemsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  name : string;
+  price : number;
+
+  constructor(
+  public navCtrl: NavController, 
+  public modalCtrl : ModalController,
+  public viewCtrl: ViewController,
+  public loadingCtrl: LoadingController,
+  public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddItemsPage');
+  addItem(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    firebase.database().ref("Items").child(firebase.auth().currentUser.uid).push({
+      Name : this.name,
+      Price : this.price,
+      TimeStamp : moment().format()
+    }).then(()=>{
+      this.close();
+      loading.dismiss();
+    })
   }
+
+  
+  close(){
+    this.viewCtrl.dismiss();
+  }
+
+
+
+
 
 }

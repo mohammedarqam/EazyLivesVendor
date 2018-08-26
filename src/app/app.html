@@ -9,11 +9,14 @@
 
     <ion-content class="no-scroll bg-semidark">
       <ion-list no-lines>
-        <button menuClose color="dark" [class.activeHighlight]="checkActive(p)" ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          <ion-icon class="menu-icon" item-left [name]="p.icon"></ion-icon>
+        <div *ngFor="let p of pages" >
 
-          {{p.title}}
-        </button>
+          <button menuClose color="dark" *ngIf="p.dis" [class.activeHighlight]="checkActive(p)" ion-item  (click)="openPage(p)">
+            <ion-icon class="menu-icon" item-left [name]="p.icon"></ion-icon>
+              {{p.title}}
+          </button>
+        </div>
+
       </ion-list>
     </ion-content>
     <ion-footer class="menu-footer">

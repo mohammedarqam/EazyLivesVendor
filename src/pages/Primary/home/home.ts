@@ -51,7 +51,7 @@ getVendor(){
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 4000,
+      duration: 2000,
       showCloseButton: false,
     });
     toast.present();

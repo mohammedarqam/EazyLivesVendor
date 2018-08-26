@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { FunctionHallListPage } from '../pages/Function Hall/function-hall-list/function-hall-list';
-import { HomePage } from '../pages/Primary/home/home';
 
 
 @Component({
@@ -11,78 +9,85 @@ import { HomePage } from '../pages/Primary/home/home';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any ;
+  rootPage: any = "LoginPage" ;
 
-  pages: Array<{ title: string, component: any, icon: any }>;
+
+  alwaysTrue : boolean = true;
+  functionHall : boolean = true;//this.superFine("Function Hall",1);
+  catering : boolean= true;
+  electronics : boolean= true;
+  furniture: boolean= true;
+  utencils: boolean= true;
+
+  // public categories: Array<any> = [];
+
+
+  pages: Array<{ title: string, component: any, icon: any,dis: any }>;
   activePage: any;
 
-  vendorRef = firebase.database().ref("Vendors/");
+  // vendorRef = firebase.database().ref("Vendors/");
 
   constructor(
   public platform: Platform,
   public toastCtrl: ToastController,
 ) {
     this.initializeApp();
-    this.userCheck();
     this.pages = [
-      { title: 'Home', component: "HomePage", icon: "home" },
-      { title: 'Function Halls', component: "FunctionHallListPage", icon: "ios-pin"  },
-      { title: 'Add FunctionHall', component: "AddFunctionHallPage", icon: "ios-pin"  },
-      { title: 'Notifications', component: "NotificationsPage", icon: "md-notifications" },
-      { title: 'Profile', component: "ProfilePage", icon: "ios-contact" },
+      { title: 'Home', component: "HomePage", icon: "home", dis : this.alwaysTrue },
+      { title: 'Function Halls', component: "FunctionHallListPage", icon: "ios-pin",dis : this.functionHall  },
+      { title: 'Catering', component: "ViewMenuPage", icon: "ios-pin",dis : this.catering  },
+      { title: 'Electronics', component: "ElectronicsViewPage", icon: "ios-pin",dis : this.electronics  },
+      { title: 'Furniture', component: "FurnitureViewPage", icon: "ios-pin",dis : this.furniture  },
+      { title: 'Utensils', component: "UtencilsViewPage", icon: "ios-pin",dis : this.utencils  },
+      { title: 'Inventory Update', component: "InventoryUpdatePage", icon: "ios-pin",dis : this.alwaysTrue  },
+      
     ];
     this.activePage = this.pages[0];
 
   }
 
-  userCheck() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-      this.vendorRef.child(firebase.auth().currentUser.uid).on('value', itemSnapshot => {
-        if (itemSnapshot.val()) {
-          if (itemSnapshot.val().Verified) {
-            this.rootPage = "HomePage";
-          } else {
-            this.rootPage= "LoginPage";
-            this.signOut();
-            this.presentToast("You are not Verified Yet");
-            
-          }
-        } else {
-          this.rootPage= "LoginPage";
-          this.presentToast("You are not a Vendor");
-        }
-      });
-    }
-    });
-  }
-
-  presentToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 4000,
-      showCloseButton: false,
-    });
-    toast.present();
-  }
-
-
-
-
   initializeApp() {
     this.platform.ready().then(() => {
-    });
+      // this.getCats();
+      });
   }
+
+  // getCats(){
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //     this.vendorRef.child(firebase.auth().currentUser.uid).child("Category").once('value', itemSnapshot => {
+  //       this.atCat(itemSnapshot.val());
+  //       return false;
+  //     });
+  //   }
+  //   });  
+
+  // }
+
+  // atCat(tt){
+  //   this.categories = tt;
+  //   console.log(this.categories);
+  // }
+
+  // superFine(cati,p){
+  //   // if(this.categories.findIndex(cati)>-1){
+
+  //   // }
+  //   console.log(this.pages);
+  //   return false;
+  // }
+
 
   openPage(page) {
     this.nav.setRoot(page.component);
     this.activePage = page;
-
   }
+
 
   checkActive(page) {
     return page == this.activePage;
   }
+
 
   signOut() {
     firebase.auth().signOut().then(() => {
@@ -91,7 +96,4 @@ export class MyApp {
       console.log(error.message);
     });
   }
-
-
-
 }
