@@ -23,8 +23,6 @@
   <ion-item class="content" >
   <ion-searchbar animated="true" placeholder="Enter Funtion Hall Name" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
   </ion-item>
-<!--
--->
 
   <ion-item no-lines class="content" >
     <ion-icon name="ios-pin" color="primary" item-end ></ion-icon>
@@ -56,12 +54,12 @@
             
             
             <div class="editBtns">
-        <button class="btnTrash" icon-only ion-button color="primary" (click)="edit(function)" >
+        <button class="btnTrash" icon-only ion-button color="primary" (click)="view(function)" >
           <ion-icon name="eye"></ion-icon>
         </button>
-        <button class="btnTrash"  icon-only ion-button color="secondary" (click)="edit(function)">
+        <!-- <button class="btnTrash"  icon-only ion-button color="secondary" (click)="edit(function)">
           <ion-icon name="create"></ion-icon>
-        </button>
+        </button> -->
         <button class="btnTrash" icon-only ion-button color="danger" (click)="deleteFunction(function)">
           <ion-icon name="trash"></ion-icon>
         </button>

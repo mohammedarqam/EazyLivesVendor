@@ -28,19 +28,13 @@
 </ion-card>
 
 
-
-<ion-searchbar item-end animated="true" placeholder="Search an Item" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
-
-<!-- <ion-navbar color="primary" >
-  <ion-title>Items</ion-title>
-</ion-navbar> -->
-<ion-list class="listi" *ngIf="!packItems.length" >
+<ion-list class="listi" *ngIf="packItems.length" >
   <ion-list-header color="primary" >
     Package Items
   </ion-list-header>
   <ion-item *ngFor="let ita of packItems; let i = index" >
     <h3 item-start >{{ita.Name}}</h3>
-    <button clear ion-button color="danger" item-end (click)="rmItemtoPack(it,i)" icon-only>
+    <button clear ion-button color="danger" item-end (click)="rmItemtoPack(ita,i)" icon-only>
       <ion-icon name="md-remove-circle"></ion-icon>
     </button> 
   </ion-item>
@@ -60,6 +54,7 @@
   <ion-list-header color="primary" >
     All Items
   </ion-list-header>
+  <ion-searchbar item-end animated="true" placeholder="Search an Item" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
   <ion-item *ngFor="let it of items; let i = index" >
     <h3 item-start >{{it.Name}}</h3>
     <button clear ion-button color="secondary" icon-only item-end (click)="addItemtoPack(it,i)">

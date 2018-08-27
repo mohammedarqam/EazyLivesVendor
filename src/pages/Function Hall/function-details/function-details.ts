@@ -9,13 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FunctionDetailsPage {
 
-  functionHall =  this.navParams.get("factionHall"); 
+  functionHall =  this.navParams.get("functionHall"); 
+  images : Array<any> = Object.keys(this.functionHall.Images).map(i => this.functionHall.Images[i]);
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
 
-  ionViewDidEnter() {
-    console.log(this.functionHall);
+  constructor(
+  public navCtrl: NavController, 
+  public navParams: NavParams) {
   }
 
 }

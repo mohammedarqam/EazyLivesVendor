@@ -26,19 +26,41 @@
     <ion-title>Menu Items</ion-title>
   </ion-navbar>
 
-<ion-grid>
+  <ion-card *ngIf="!items.length" >
+    <ion-card-content>
+      No Items Found
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid *ngIf="items.length" >
+    <ion-row>
+      <ion-col col-6 push-6>
+        <ion-searchbar item-end animated="true" placeholder="Search an Item" [(ngModel)]="searchBarI" (ionInput)="getItemsI(searchBarI)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+<ion-grid *ngIf="items.length" >
   <ion-row>
     <ion-col col-md-3 *ngFor="let i of items">
     <ion-card >
       <ion-card-content>
-        <ion-card-title>
+        <div class="mainContent">
+          <ion-card-title>
           {{i.Name}}
         </ion-card-title>
         <ion-item>
             <p item-start ion-text color="primary" >Price</p>
-            <p item-end ion-text color="danger">{{i.Price}} </p>
+            <p item-end ion-text color="danger">Rs.{{i.Price}} </p>
         </ion-item>
-    </ion-card-content>
+      </div>
+      <div class="editBtns">
+  <button class="btnTrash" icon-only ion-button color="danger" (click)="delItemConfirm(i)">
+    <ion-icon name="trash"></ion-icon>
+  </button>
+  </div>
+</ion-card-content>
     </ion-card>
     </ion-col>
   </ion-row>
@@ -46,25 +68,71 @@
 
 
 <ion-navbar color="primary" >
-    <ion-title>Packages</ion-title>
+  <ion-title>Packages</ion-title>
 </ion-navbar>
 
 
+<ion-card *ngIf="!packages.length" >
+    <ion-card-content>
+      No Packages Found
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid *ngIf="packages.length" >
+    <ion-row>
+      <ion-col col-6 push-6>
+        <ion-searchbar item-end animated="true" placeholder="Search a Package" [(ngModel)]="searchBarP" (ionInput)="getItemsP(searchBarP)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+<ion-grid *ngIf="packages.length" >
+<ion-row>
+  <ion-col col-md-3 *ngFor="let it of packages">
+  <ion-card >
+    <ion-card-content>
+      <div class="mainContent">
+      <ion-card-title>
+        {{it.Name}}
+      </ion-card-title>
+      <ion-item>
+          <p item-start ion-text color="primary" >Price</p>
+          <p item-end ion-text color="danger">Rs.{{it.Price}} </p>
+      </ion-item>
+      <ion-item>
+        <p item-start ion-text color="primary" >Total Items</p>
+        <p item-end ion-text color="danger">{{it.Items.length}} </p>
+    </ion-item>
+    </div>
+            <div class="editBtns">
+        <button class="btnTrash" icon-only ion-button color="secondary" (click)="view(it)" >
+          <ion-icon name="eye"></ion-icon>
+        </button>
+        <button class="btnTrash" icon-only ion-button color="danger" (click)="delPackConfirm(it)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </div>
+</ion-card-content>
+  </ion-card>
+  </ion-col>
+</ion-row>
+</ion-grid>
 
 
 
-
-
-  <ion-fab right bottom>
+<ion-fab right bottom>
     <button ion-fab color="danger">
       <ion-icon name="add"></ion-icon>
     </button>
-    <ion-fab-list side="top">
-      <button ion-fab color="danger" large (click)="AddPackage()" >
+    <ion-fab-list side="left">
+      <button ion-button  color="danger"  (click)="AddPackage()" >
         <ion-icon name="md-cube"></ion-icon>
+        Add Package
       </button>
-      <button ion-fab color="danger" large (click)="AddItem()" >
+      <button ion-button color="danger" (click)="AddItem()" >
         <ion-icon name="md-pizza"></ion-icon>
+        Add Item
       </button>
     </ion-fab-list>
   </ion-fab>

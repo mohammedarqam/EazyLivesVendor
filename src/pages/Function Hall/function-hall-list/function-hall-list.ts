@@ -93,7 +93,7 @@ edit(functionHall){
 }
 
 view(functionHall){
-  this.navCtrl.push("FunctionDetailsPage",{functionHall});
+  this.navCtrl.push("FunctionDetailsPage",{functionHall : functionHall});
 }
 
 

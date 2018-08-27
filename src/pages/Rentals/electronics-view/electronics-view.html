@@ -25,23 +25,36 @@
     </ion-item>
     </ion-col>
     <ion-col col-6 push-2 >
-    <ion-searchbar item-end animated="true" placeholder="Search a Restaurant" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+    <ion-searchbar item-end animated="true" placeholder="Search an Electronic" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
     </ion-col>
     </ion-row>
     </ion-grid>
-    
+
+  <ion-item no-lines class="content" >
+    <ion-icon name="md-desktop" color="primary" item-end ></ion-icon>
+    <h2 class="heads"  item-end>{{totElectronics}}</h2>
+  </ion-item>
+
 <ion-grid>
   <ion-row>
     <ion-col col-md-3 *ngFor="let e of electronics">
     <ion-card >
       <ion-card-content>
+      <div class="mainContent">
         <ion-card-title>
           {{e.ProductName}}
         </ion-card-title>
         <ion-item>
-            <p item-start ion-text color="primary" >Rate/Day</p>
-            <p item-end ion-text color="danger">{{e.RatePerDay}} </p>
+            <p item-start ion-text color="primary" >Rate</p>
+            <p item-end ion-text color="danger">Rs.{{e.RatePerDay}}/Day </p>
         </ion-item>
+        </div>
+
+        <div class="editBtns">
+        <button class="btnTrash" icon-only ion-button color="danger" (click)="delConfirm(e)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </div>
     </ion-card-content>
     </ion-card>
     </ion-col>

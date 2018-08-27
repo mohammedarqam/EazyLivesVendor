@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>Package Details</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only clear (click)="close()" >
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>{{package.Name}} </ion-card-title>
+      <ion-item>
+        <p item-start ion-text color="primary" >Price</p>
+        <p item-end ion-text color="danger">Rs.{{package.Price}} </p>
+      </ion-item>
+</ion-card-content>
+</ion-card>
+
+
+  <ion-navbar color="primary">
+    <ion-title>Package Items</ion-title>
+  </ion-navbar>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item *ngFor="let ita of package.Items" class="pItems" >
+        <h3 item-start >{{ita.Name}}</h3>
+        <h3 item-end color="danger" ion-text>Rs.{{ita.Price}} </h3>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

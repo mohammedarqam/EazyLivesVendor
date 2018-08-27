@@ -16,6 +16,11 @@
 
   <ion-grid>
 
+  <ion-row>
+    <ion-col col-2 push-8>
+    <button ion-button color="primary" [disabled]="!name||!ContactPerson||MobileContact.length!='10'||!MaxCapacity||!MinCapacity"  (click)="save()" >Save and Upload Images</button>
+    </ion-col>
+  </ion-row>
 
     <ion-row>
     <ion-item>
@@ -283,9 +288,6 @@
     </ion-item>
   </ion-row>
 
-  <ion-row>
-    <button ion-button color="primary" [disabled]="!name||!ContactPerson||!MobileContact||!MaxCapacity||!MinCapacity" block (click)="save()" >Save and Upload Images</button>
-  </ion-row>
 
 </ion-grid>
   </ion-card-content>

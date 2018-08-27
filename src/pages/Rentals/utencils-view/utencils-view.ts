@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
 @IonicPage()
@@ -20,6 +20,7 @@ export class UtencilsViewPage {
   constructor(
   public navCtrl: NavController, 
   public loadingCtrl: LoadingController,
+  public alertCtrl : AlertController, 
   public toastCtrl: ToastController,
   public navParams: NavParams) {
     this.getUtencils();
@@ -72,6 +73,57 @@ getItems(searchbar) {
     }
   });
 }
+
+
+presentToast(msg) {
+  let toast = this.toastCtrl.create({
+    message: msg,
+    duration: 4000,
+    showCloseButton: false,
+  });
+  toast.present();
+}
+
+
+
+delConfirm(item) {
+  let confirm = this.alertCtrl.create({
+    title: 'Are you sure you want to Delete this Item ?',
+    message: 'This Item cannot be recovered again',
+    buttons: [
+      {
+        text: 'No, Its a mistake',
+        handler: () => {
+
+        }
+      },
+      {
+        text: 'Yes, I understand',
+        handler: () => {
+          this.delItem(item);
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
+
+
+delItem(item) {
+  let loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+  });
+  loading.present();
+
+    this.utencilRef.child(item.key).remove().then(() => {
+      this.getUtencils();
+      this.presentToast("Item Deleted");
+    }).then(()=>{
+      loading.dismiss();
+    }) ;
+
+}
+
 
 
 

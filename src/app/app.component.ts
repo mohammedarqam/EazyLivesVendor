@@ -35,11 +35,11 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: "HomePage", icon: "home", dis : this.alwaysTrue },
       { title: 'Function Halls', component: "FunctionHallListPage", icon: "ios-pin",dis : this.functionHall  },
-      { title: 'Catering', component: "ViewMenuPage", icon: "ios-pin",dis : this.catering  },
-      { title: 'Electronics', component: "ElectronicsViewPage", icon: "ios-pin",dis : this.electronics  },
-      { title: 'Furniture', component: "FurnitureViewPage", icon: "ios-pin",dis : this.furniture  },
-      { title: 'Utensils', component: "UtencilsViewPage", icon: "ios-pin",dis : this.utencils  },
-      { title: 'Inventory Update', component: "InventoryUpdatePage", icon: "ios-pin",dis : this.alwaysTrue  },
+      { title: 'Catering', component: "ViewMenuPage", icon: "md-restaurant",dis : this.catering  },
+      { title: 'Electronics', component: "ElectronicsViewPage", icon: "md-desktop",dis : this.electronics  },
+      { title: 'Furniture', component: "FurnitureViewPage", icon: "ios-albums-outline",dis : this.furniture  },
+      { title: 'Utensils', component: "UtencilsViewPage", icon: "ios-wine",dis : this.utencils  },
+      { title: 'Inventory Update', component: "InventoryUpdatePage", icon: "ios-construct",dis : this.alwaysTrue  },
       
     ];
     this.activePage = this.pages[0];

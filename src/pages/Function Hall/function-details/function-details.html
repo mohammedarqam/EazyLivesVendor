@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>{{function.name}}</ion-title>
+    <ion-title>{{functionHall.Name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,34 +10,217 @@
 <ion-content padding>
   <ion-card>
     <ion-card-content>
+
       <ion-item>
-        <p class="heads" item-start>Address</p>
-        <p item-end>{{function.address}}</p>
+        <p class="heads" item-start>Status</p>
+        <p item-end ion-text color="primary" >{{functionHall.Ownership}}</p>
       </ion-item>
 
       <ion-item>
-        <p class="heads" item-start>Rent</p>
-        <p item-end>{{function.rent}}</p>
-      </ion-item>
-  
-      <ion-item>
-        <p class="heads" item-start>Capacity</p>
-        <p item-end>{{function.capacity}}</p>
-      </ion-item>
-      <ion-item>
-        <p class="heads" item-start>Contact Name</p>
-        <p item-end>{{function.cName}}</p>
-      </ion-item>
-      <ion-item>
-        <p class="heads" item-start>Contact Email</p>
-        <p item-end>{{function.cEmail}}</p>
+        <p class="heads" item-start>Contact Person</p>
+        <p item-end ion-text color="primary" >{{functionHall.ContactPerson}}</p>
       </ion-item>
 
       <ion-item>
-        <p class="heads" item-start>Contact Number</p>
-        <p item-end>{{function.cNum}}</p>
+        <p class="heads" item-start>Mobile Contact</p>
+        <p item-end ion-text color="primary" >{{functionHall.MobileContact}}</p>
       </ion-item>
-  
+
+      <ion-item>
+        <p class="heads" item-start>Maximum Capacity</p>
+        <p item-end ion-text color="primary" >{{functionHall.MaxCapacity}}</p>
+      </ion-item>
+      
+      <ion-item>
+        <p class="heads" item-start>Minimum Capacity</p>
+        <p item-end ion-text color="primary" >{{functionHall.MinCapacity}}</p>
+      </ion-item>
+      
+      <ion-item>
+        <p class="heads" item-start>Minimum Booking Amount</p>
+        <p item-end *ngIf="functionHall.MBAmount" ion-text color="primary" >{{functionHall.MBAmount}}</p>
+        <p item-end *ngIf="!functionHall.MBAmount" ion-text color="primary" >Not Provided</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="heads" item-start>Owner 1</p>
+        <p item-end *ngIf="functionHall.Owner1" ion-text color="primary" >{{functionHall.Owner1}}</p>
+        <p item-end *ngIf="!functionHall.Owner1" ion-text color="primary" >Not Provided</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="heads" item-start>Owner 2</p>
+        <p item-end *ngIf="functionHall.Owner2" ion-text color="primary" >{{functionHall.Owner2}}</p>
+        <p item-end *ngIf="!functionHall.Owner2" ion-text color="primary" >Not Provided</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="heads" item-start>Office Contact</p>
+        <p item-end *ngIf="functionHall.OfficeContact" ion-text color="primary" >{{functionHall.OfficeContact}}</p>
+        <p item-end *ngIf="!functionHall.OfficeContact" ion-text color="primary" >Not Provided</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="heads" item-start>Extra Charges 1</p>
+        <p item-end *ngIf="functionHall.ExtraCharges1" ion-text color="primary" >{{functionHall.ExtraCharges1}}</p>
+        <p item-end *ngIf="!functionHall.ExtraCharges1" ion-text color="primary" >No Charges</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="heads" item-start>Extra Charges 2</p>
+        <p item-end *ngIf="functionHall.ExtraCharges2" ion-text color="primary" >{{functionHall.ExtraCharges2}}</p>
+        <p item-end *ngIf="!functionHall.ExtraCharges2" ion-text color="primary" >No Charges</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="heads" item-start>Extra Charges 3</p>
+        <p item-end *ngIf="functionHall.ExtraCharges3" ion-text color="primary" >{{functionHall.ExtraCharges3}}</p>
+        <p item-end *ngIf="!functionHall.ExtraCharges3" ion-text color="primary" >No Charges</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="heads" item-start>Note Point</p>
+        <p item-end *ngIf="functionHall.NotePoint" ion-text color="primary" >{{functionHall.NotePoint}}</p>
+        <p item-end *ngIf="!functionHall.NotePoint" ion-text color="primary" >Not Provided</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="heads" item-start>Extra Points</p>
+        <p item-end *ngIf="functionHall.ExtraPoints" ion-text color="primary" >{{functionHall.ExtraPoints}}</p>
+        <p item-end *ngIf="!functionHall.ExtraPoints" ion-text color="primary" >Not Provided</p>
+      </ion-item>
+
+
+
+
     </ion-card-content>
   </ion-card>
+
+  <ion-navbar color="primary">
+    <ion-title>Amenities</ion-title>
+  </ion-navbar>
+
+  <ion-grid>
+    <ion-row>
+
+      <ion-col col-3 *ngIf="functionHall.ACArrangementCharges"  >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+                AC Arrangement
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.ACArrangementChargesAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-3 *ngIf="functionHall.ButlerAndBohisIncluded"  >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+                Butler And Bohis Included
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.ButlerAndBohisIncludedAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-3 *ngIf="functionHall.CroceryVariety" >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+              Crocery Variety
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.CroceryVarietyAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-3 *ngIf="functionHall.CutleryAvailable"  >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+              Cutlery
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.CutleryAvailableAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-3 *ngIf="functionHall.DecorIncluded"  >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+              DecorIncluded
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.DecorIncludedAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-3 *ngIf="functionHall.ElectricalDecors"  >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+              ElectricalDecors
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.ElectricalDecorsAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-3 *ngIf="functionHall.GeneratorIncluded"  >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+              Generator Included
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.GeneratorIncludedAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-3 *ngIf="functionHall.MeterConsumptionIncluded"  >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+              Meter Consumption Included
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.MeterConsumptionIncludedAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-3 *ngIf="functionHall.ReadyMadeStage"  >
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title>
+              Ready-Made Stage
+            </ion-card-title>
+            <h2 ion-text color="primary">Rs.{{functionHall.ReadyMadeStageAmount}}/-</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-navbar color="primary">
+    <ion-title>Images</ion-title>
+  </ion-navbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3 *ngFor="let im of images" >
+          <ion-card>
+            <ion-card-content>
+              <img [src]="im.ImageUrl"/>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
 </ion-content>

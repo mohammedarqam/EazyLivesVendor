@@ -38,7 +38,7 @@ export class AddPackagePage {
       content: 'Please wait...'
     });
     loading.present();
-    firebase.database().ref("Items").child(firebase.auth().currentUser.uid).push({
+    firebase.database().ref("Package").child(firebase.auth().currentUser.uid).push({
       Name : this.name,
       Price : this.price,
       Items : this.packItems,
@@ -97,7 +97,7 @@ export class AddPackagePage {
 
   rmItemtoPack(item,ind){
     this.items.push(item);
-    this.packItems.slice(ind,1);
+    this.packItems.splice(ind,1);
   }
 
   checkData(){

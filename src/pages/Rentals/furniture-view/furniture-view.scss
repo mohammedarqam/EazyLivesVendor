@@ -1,3 +1,26 @@
 page-furniture-view {
+    .card{
+        border-radius: 2%;
+        box-shadow : 0 5px 5px 0 rgba(0,0,0,0.25);
+    }
+    
+    .editBtns {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-transition: .5s ease;
+        transition: .5s ease;
+        opacity: 0;
+      }
+    
+      .card:hover .mainContent {
+        opacity: 0.3;
+      }
+      
+       .card:hover .editBtns {
+        opacity: 1;
+      }
 
 }
